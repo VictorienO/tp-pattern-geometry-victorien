@@ -9,21 +9,26 @@ public class Coordinate {
 		this.x = x;
 		this.y = y;
 	}
+	public Coordinate() {
+		this.x = Double.NaN;
+		this.y = Double.NaN;
+	}
 
 	public double getX() {
 		return x;
 	}
 
-	public void setX(double x) {
-		this.x = x;
-	}
-
 	public double getY() {
 		return y;
 	}
-
-	public void setY(double y) {
-		this.y = y;
+	
+	public boolean isEmpty() {
+		return Double.isNaN(x) || Double.isNaN(y);
+	}
+	
+	public String toString() {
+		String chaine = "["+this.x+","+this.y+"]";
+		return chaine;
 	}
 	
 
