@@ -23,7 +23,7 @@ public class Point implements Geometry {
 	public String getType() {
 		return "Point";
 	}
-
+	
 	@Override
 	public void translate(double dx, double dy) {
 		if (!this.isEmpty()) {
@@ -48,4 +48,9 @@ public class Point implements Geometry {
 		evlPoint = eBuild.build();
 		return evlPoint;
 	}
+	
+	@Override
+	public void accept(GeometryVisitor visitor){
+        visitor.visit(this);
+    }
 }
