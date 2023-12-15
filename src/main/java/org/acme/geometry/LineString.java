@@ -60,4 +60,9 @@ public class LineString implements Geometry {
 		evlPoint = eBuild.build();
 		return evlPoint;
 	}
+	
+	@Override
+	public void accept(GeometryVisitor visitor){
+        visitor.visit(this);
+    }
 }
