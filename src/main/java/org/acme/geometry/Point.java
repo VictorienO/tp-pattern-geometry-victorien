@@ -39,4 +39,13 @@ public class Point implements Geometry {
 		Point pointCopied = new Point(coordinateCopied);
 		return pointCopied;
 	}
+	
+	@Override
+	public Enveloppe getEnveloppe() {
+		EnveloppeBuilder eBuild = new EnveloppeBuilder();
+		eBuild.insert(this.coordinate);
+		Enveloppe evlPoint = new Enveloppe();
+		evlPoint = eBuild.build();
+		return evlPoint;
+	}
 }

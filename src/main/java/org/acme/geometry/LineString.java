@@ -49,4 +49,15 @@ public class LineString implements Geometry {
 		LineString lineStringCopied = new LineString(pointsCopied);
 		return lineStringCopied;	
 	}
+	
+	@Override
+	public Enveloppe getEnveloppe() {
+		EnveloppeBuilder eBuild = new EnveloppeBuilder();
+		for(Point point : points) {
+			eBuild.insert(point.getCoordinate());
+		}
+		Enveloppe evlPoint = new Enveloppe();
+		evlPoint = eBuild.build();
+		return evlPoint;
+	}
 }
