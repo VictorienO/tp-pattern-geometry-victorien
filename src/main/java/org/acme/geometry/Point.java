@@ -14,7 +14,11 @@ public class Point implements Geometry {
 	public Coordinate getCoordinate() {
 		return coordinate;
 	}
-
+	
+	public boolean isEmpty() {
+		return this.coordinate.isEmpty();
+	}
+	
 	@Override
 	public String getType() {
 		return "Point";
