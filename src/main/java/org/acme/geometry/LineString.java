@@ -8,7 +8,6 @@ public class LineString implements Geometry {
 	private List<Point> points;
 
 	public LineString() {
-
 	}
 
 	public LineString(List<Point> points) {
@@ -38,5 +37,16 @@ public class LineString implements Geometry {
 		for (Point point : points) {
 			point.translate(dx, dy);
 		}
+	}
+	
+	@Override
+	public LineString clone() {
+		List<Point> pointsCopied = new ArrayList<>();
+		for(Point point : points) {
+			Point tempPoint = (Point) point.clone();
+			pointsCopied.add(tempPoint);
+		}
+		LineString lineStringCopied = new LineString(pointsCopied);
+		return lineStringCopied;	
 	}
 }

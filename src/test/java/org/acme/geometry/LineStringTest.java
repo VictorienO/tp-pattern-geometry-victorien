@@ -58,4 +58,29 @@ public class LineStringTest {
 		l.translate(1.0, 1.0);
 		Assert.assertEquals(l.getPointN(0).getCoordinate().getX(), 4.0,EPSILON);
 	}
+	
+	@Test
+	public void testLineCLone() {
+		Coordinate c = new Coordinate(3.0,4.0);
+		Point p = new Point(c);
+		
+		Coordinate b = new Coordinate(4.0,4.0);
+		Point q = new Point(b);
+		
+		Coordinate d = new Coordinate(4.0,5.0);
+		Point r = new Point(d);
+		
+		List<Point> listeTest = new ArrayList<Point>();
+		listeTest.add(p);
+		listeTest.add(q);
+		listeTest.add(r);
+		
+		LineString l = new LineString(listeTest);
+		
+		LineString lCopied = new LineString();
+		lCopied = (LineString) l.clone();
+		Assert.assertEquals(l.getPointN(0).getCoordinate().getX(),lCopied.getPointN(0).getCoordinate().getX(), EPSILON);
+		Assert.assertEquals(l.getPointN(0).getCoordinate().getY(),lCopied.getPointN(0).getCoordinate().getY(), EPSILON);
+
+	}
 }
