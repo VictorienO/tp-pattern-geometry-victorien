@@ -27,8 +27,7 @@ public class Coordinate {
 	}
 	
 	public String toString() {
-		String chaine = "["+this.x+","+this.y+"]";
-		return chaine;
+		return "["+this.x+","+this.y+"]";
 	}
 	
 

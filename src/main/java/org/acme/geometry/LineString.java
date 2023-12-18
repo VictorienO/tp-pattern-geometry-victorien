@@ -45,8 +45,7 @@ public class LineString implements Geometry {
 			Point tempPoint = (Point) point.clone();
 			pointsCopied.add(tempPoint);
 		}
-		LineString lineStringCopied = new LineString(pointsCopied);
-		return lineStringCopied;	
+		return new LineString(pointsCopied);	
 	}
 	
 	@Override
@@ -55,9 +54,7 @@ public class LineString implements Geometry {
 		for(Point point : points) {
 			eBuild.insert(point.getCoordinate());
 		}
-		Enveloppe evlPoint = new Enveloppe();
-		evlPoint = eBuild.build();
-		return evlPoint;
+		return eBuild.build();
 	}
 	
 	@Override
