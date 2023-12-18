@@ -5,10 +5,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import org.junit.Test;
-
-import junit.framework.Assert;
+import org.junit.Assert;
 
 public class GeometryVisitorTest {
 	
