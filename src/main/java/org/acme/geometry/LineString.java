@@ -19,8 +19,7 @@ public class LineString implements Geometry {
 	}
 
 	public Point getPointN(int n) {
-		Point ptIndexed = points.get(n);
-		return ptIndexed;
+		return points.get(n);
 	}
 
 	public boolean isEmpty() {
@@ -65,4 +64,10 @@ public class LineString implements Geometry {
 	public void accept(GeometryVisitor visitor){
         visitor.visit(this);
     }
+
+	@Override
+	public void accept(WktVisitor visitor) {
+		visitor.visit(this);
+		
+	}
 }

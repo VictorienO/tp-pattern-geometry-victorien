@@ -20,7 +20,6 @@ public class EnveloppeBuilder {
 		double ymax = Collections.max(yVals);
 		Coordinate bl = new Coordinate(xmin, ymin);
 		Coordinate tr = new Coordinate(xmax, ymax);
-		Enveloppe enveloppe = new Enveloppe(bl, tr);
-		return enveloppe;
+		return new Enveloppe(bl, tr);
 	}
 }

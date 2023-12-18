@@ -6,4 +6,5 @@ public interface Geometry {
 	abstract Geometry clone();
 	abstract Enveloppe getEnveloppe();
 	abstract void accept(GeometryVisitor visitor);
+	abstract void accept(WktVisitor visitor);
 }
