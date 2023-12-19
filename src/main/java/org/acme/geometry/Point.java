@@ -56,6 +56,12 @@ public class Point implements Geometry {
 	@Override
 	public void accept(WktVisitor visitor) {
 		visitor.visit(this);
-		
+	}
+	
+	@Override
+	public String asText() {
+		WktVisitor wktVisitor = new WktVisitor();
+		accept(wktVisitor);
+		return wktVisitor.getResult();
 	}
 }

@@ -7,4 +7,5 @@ public interface Geometry {
 	abstract Enveloppe getEnveloppe();
 	abstract void accept(GeometryVisitor visitor);
 	abstract void accept(WktVisitor visitor);
+	abstract String asText();
 }
