@@ -38,4 +38,25 @@ public class WktVisitorTest {
 		geometry.accept(visitor);
 		assertEquals("LINESTRING(3.0 4.0,3.0 5.0,3.0 6.0)", visitor.getResult());
 	}
+	
+	@Test
+	public void testWktAbstractGeometryPoint() {
+		Geometry geometry = new Point(new Coordinate(3.0 , 4.0));
+		String wktGeom = geometry.asText();
+		assertEquals("POINT(3.0 4.0)", wktGeom);
+	}
+	
+	@Test
+	public void testWktAbstractGeometryLinestring() {
+		Point p = new Point(new Coordinate(3.0, 4.0));
+		Point q = new Point(new Coordinate(4.0,4.0));
+		Point r = new Point(new Coordinate(4.0,5.0));
+		List<Point> listeTest = new ArrayList<Point>();
+		listeTest.add(p);
+		listeTest.add(q);
+		listeTest.add(r);
+		Geometry geometry = new LineString(listeTest);
+		String wktGeom = geometry.asText();
+		assertEquals("LINESTRING(3.0 4.0,4.0 4.0,4.0 5.0)", wktGeom);
+	}
 }
