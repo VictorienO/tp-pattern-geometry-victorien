@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.ByteArrayOutputStream;
 import org.junit.Test;
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
 
 public class GeometryVisitorTest {
 	
@@ -62,7 +62,7 @@ public class GeometryVisitorTest {
 		String result;
 		try {
 			result = os.toString("UTF8");
-			Assert.assertEquals("Je suis un point Vide :( ", result);
+			assertEquals("Je suis un point Vide :( ", result);
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -80,10 +80,36 @@ public class GeometryVisitorTest {
 		String result;
 		try {
 			result = os.toString("UTF8");
-			Assert.assertEquals("Je suis une LineString vide :(", result);
+			assertEquals("Je suis une LineString vide :(", result);
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	@Test
+	public void testVisitPointEvlp() {
+		EnveloppeBuilder enveloppeBuilder = new EnveloppeBuilder();
+		Geometry g = new Point(new Coordinate(3.0,4.0));
+		g.accept(enveloppeBuilder);
+		assertEquals(enveloppeBuilder.xVals.toString(), "[3.0]");
+		
+	}
+	
+	@Test
+	public void testVisitLineEvlp() {
+		EnveloppeBuilder enveloppeBuilder = new EnveloppeBuilder();
+		Point p = new Point(new Coordinate(3.0,4.0));
+		Point q = new Point(new Coordinate(4.0,4.0));
+		Point r = new Point(new Coordinate(4.0,4.5));
+		List<Point> listeTest = new ArrayList<Point>();
+		listeTest.add(p);
+		listeTest.add(q);
+		listeTest.add(r);
+		Geometry geometry = new LineString(listeTest);
+		geometry.accept(enveloppeBuilder);
+		assertEquals(enveloppeBuilder.xVals.toString(), "[3.0, 4.0, 4.0]");
+		
+		
 	}
 }
