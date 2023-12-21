@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class EnveloppeBuilder {
+public class EnveloppeBuilder implements GeometryVisitor {
 	public List<Double> xVals = new ArrayList<>();
 	public List<Double> yVals = new ArrayList<>();
 	
@@ -21,5 +21,18 @@ public class EnveloppeBuilder {
 		Coordinate bl = new Coordinate(xmin, ymin);
 		Coordinate tr = new Coordinate(xmax, ymax);
 		return new Enveloppe(bl, tr);
+	}
+	
+	@Override
+	public void visit(Point point) {
+		insert(point.getCoordinate());
+	}
+	
+	@Override
+	public void visit(LineString lineString) {
+		for(int i = 0; i< lineString.getNumPoints(); i++) {
+			Point point = lineString.getPointN(i);
+			visit(point);
+		}
 	}
 }
